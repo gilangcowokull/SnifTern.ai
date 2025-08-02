@@ -6,6 +6,83 @@ JobGuardian Pro is a comprehensive, AI-powered job fraud detection platform buil
 
 ---
 
+## 🛠️ **Tech Stack & Libraries**
+
+### **Backend Framework**
+![Flask](https://img.shields.io/badge/Flask-2.3+-000000?style=for-the-badge&logo=flask&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3.8+-3776AB?style=for-the-badge&logo=python&logoColor=white)
+
+### **Machine Learning & AI**
+![Scikit-learn](https://img.shields.io/badge/scikit--learn-1.5.2+-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)
+![NumPy](https://img.shields.io/badge/NumPy-1.24+-013243?style=for-the-badge&logo=numpy&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-2.0+-150458?style=for-the-badge&logo=pandas&logoColor=white)
+
+### **Web Scraping & Data Processing**
+![BeautifulSoup](https://img.shields.io/badge/BeautifulSoup-4.12+-572C1A?style=for-the-badge&logo=beautifulsoup&logoColor=white)
+![Requests](https://img.shields.io/badge/Requests-2.31+-000000?style=for-the-badge&logo=requests&logoColor=white)
+![LXML](https://img.shields.io/badge/LXML-4.9+-000000?style=for-the-badge&logo=lxml&logoColor=white)
+
+### **OCR & Image Processing**
+![Tesseract](https://img.shields.io/badge/Tesseract-5.0+-000000?style=for-the-badge&logo=tesseract&logoColor=white)
+![Pillow](https://img.shields.io/badge/Pillow-10.0+-000000?style=for-the-badge&logo=pillow&logoColor=white)
+![Pytesseract](https://img.shields.io/badge/Pytesseract-0.3.10+-000000?style=for-the-badge&logo=pytesseract&logoColor=white)
+
+### **Frontend Technologies**
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![Font Awesome](https://img.shields.io/badge/Font_Awesome-6.0.0+-339AF0?style=for-the-badge&logo=fontawesome&logoColor=white)
+
+### **PDF Generation & Reporting**
+![ReportLab](https://img.shields.io/badge/ReportLab-4.0+-000000?style=for-the-badge&logo=reportlab&logoColor=white)
+![Python DateUtil](https://img.shields.io/badge/Python_DateUtil-2.8+-000000?style=for-the-badge&logo=python&logoColor=white)
+
+### **Development & Deployment**
+![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
+![Virtual Environment](https://img.shields.io/badge/Virtual_Environment-Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Pip](https://img.shields.io/badge/Pip-3776AB?style=for-the-badge&logo=pip&logoColor=white)
+
+### **Platform Integrations**
+![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)
+![Indeed](https://img.shields.io/badge/Indeed-003A9B?style=for-the-badge&logo=indeed&logoColor=white)
+![Glassdoor](https://img.shields.io/badge/Glassdoor-0CAA41?style=for-the-badge&logo=glassdoor&logoColor=white)
+
+### **Key Libraries & Dependencies**
+```python
+# Core Framework
+Flask>=2.3.0                    # Web framework
+Werkzeug>=2.3.0                 # WSGI utilities
+
+# Machine Learning
+scikit-learn>=1.5.2             # ML algorithms and utilities
+numpy>=1.24.0                   # Numerical computing
+pandas>=2.0.0                   # Data manipulation
+
+# Web Scraping
+requests>=2.31.0                # HTTP library
+beautifulsoup4>=4.12.0          # HTML parsing
+lxml>=4.9.0                     # XML/HTML processing
+
+# OCR & Image Processing
+Pillow>=10.0.0                  # Image processing
+pytesseract>=0.3.10             # OCR wrapper
+opencv-python>=4.8.0            # Computer vision
+
+# PDF Generation
+reportlab>=4.0.0                # PDF creation
+python-dateutil>=2.8.0          # Date utilities
+
+# Text Processing
+nltk>=3.8.0                     # Natural language processing
+regex>=2023.0.0                 # Advanced regex patterns
+
+# Development
+python-dotenv>=1.0.0            # Environment variables
+gunicorn>=21.0.0                # Production server
+```
+
+---
+
 ## 🚀 **Key Features**
 
 ### **AI-Powered Analysis**
