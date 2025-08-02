@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ translations.title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-shield-alt"></i>
+                    <h1>JobGuardian Pro</h1>
+                </div>
+                <p class="tagline">{{ translations.tagline }}</p>
+                
+                <!-- Language Selector -->
+                <div class="language-selector">
+                    <select id="language-select" onchange="changeLanguage(this.value)">
+                        <option value="en" {% if lang == 'en' %}selected{% endif %}>English</option>
+                        <option value="hi" {% if lang == 'hi' %}selected{% endif %}>हिंदी</option>
+                        <option value="bn" {% if lang == 'bn' %}selected{% endif %}>বাংলা</option>
+                    </select>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="nav-tabs">
+            <button class="nav-tab active" data-tab="job-detection">
+                <i class="fas fa-search"></i>
+                {{ translations.job_detection }}
+            </button>
+            <button class="nav-tab" data-tab="company-search">
+                <i class="fas fa-building"></i>
+                {{ translations.company_search }}
+            </button>
+            <button class="nav-tab" data-tab="integrations">
+                <i class="fas fa-plug"></i>
+                Integrations
+            </button>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Job Detection Tab -->
+            <div class="tab-content active" id="job-detection">
+                <div class="card">
+                    <h2><i class="fas fa-search"></i> {{ translations.job_analysis }}</h2>
+                    <p class="card-description">{{ translations.analysis_desc }}</p>
+                    
+                    <div class="input-methods">
+                        <div class="method-tabs">
+                            <button class="method-tab active" data-method="text">
+                                <i class="fas fa-keyboard"></i>
+                                {{ translations.direct_text }}
+                            </button>
+                            <button class="method-tab" data-method="url">
+                                <i class="fas fa-link"></i>
+                                {{ translations.url_extraction }}
+                            </button>
+                        </div>
+
+                        <!-- Direct Text Input -->
+                        <div class="input-section active" id="text-input">
+                            <textarea id="job-text" placeholder="{{ translations.paste_placeholder }}"></textarea>
+                            <button class="analyze-btn" onclick="analyzeJob()">
+                                <i class="fas fa-magic"></i>
+                                {{ translations.analyze_btn }}
+                            </button>
+                        </div>
+
+                        <!-- URL Input -->
+                        <div class="input-section" id="url-input">
+                            <input type="url" id="job-url" placeholder="{{ translations.url_placeholder }}">
+                            <button class="extract-btn" onclick="extractFromUrl()">
+                                <i class="fas fa-download"></i>
+                                {{ translations.extract_btn }}
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Results Section -->
+                    <div id="results" class="results-section" style="display: none;">
+                        <h3><i class="fas fa-chart-line"></i> {{ translations.results }}</h3>
+                        <div id="result-content"></div>
+                        
+                        <!-- AI-Powered Analysis Section -->
+                        <div id="ai-analysis" class="ai-analysis-section" style="display: none;">
+                            <h4><i class="fas fa-brain"></i> AI-Powered Analysis</h4>
+                            <div class="ai-analysis-grid">
+                                <div class="ai-analysis-card" id="salary-analysis">
+                                    <h5><i class="fas fa-dollar-sign"></i> {{ translations.salary_analysis }}</h5>
+                                    <div class="ai-content"></div>
+                                </div>
+                                <div class="ai-analysis-card" id="job-quality">
+                                    <h5><i class="fas fa-star"></i> {{ translations.job_quality }}</h5>
+                                    <div class="ai-content"></div>
+                                </div>
+                                <div class="ai-analysis-card" id="interview-analysis">
+                                    <h5><i class="fas fa-handshake"></i> {{ translations.interview_analysis }}</h5>
+                                    <div class="ai-content"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Export Section -->
+                        <div class="export-section">
+                            <button class="export-btn" onclick="exportPDF()">
+                                <i class="fas fa-file-pdf"></i>
+                                {{ translations.export_pdf }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Company Search Tab -->
+            <div class="tab-content" id="company-search">
+                <div class="card">
+                    <h2><i class="fas fa-building"></i> {{ translations.company_database }}</h2>
+                    <p class="card-description">{{ translations.company_desc }}</p>
+                    
+                    <div class="search-section">
+                        <div class="search-box">
+                            <input type="text" id="company-name" placeholder="{{ translations.company_placeholder }}">
+                            <button class="search-btn" onclick="searchCompany()">
+                                <i class="fas fa-search"></i>
+                                {{ translations.search_btn }}
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Company Results -->
+                    <div id="company-results" class="company-results" style="display: none;">
+                        <h3><i class="fas fa-info-circle"></i> {{ translations.company_info }}</h3>
+                        <div id="company-content"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Integrations Tab -->
+            <div class="tab-content" id="integrations">
+                <div class="card">
+                    <h2><i class="fas fa-plug"></i> Platform Integrations</h2>
+                    <p class="card-description">Analyze job postings directly from popular job platforms.</p>
+                    
+                    <!-- LinkedIn Integration -->
+                    <div class="integration-section">
+                        <h3><i class="fab fa-linkedin"></i> {{ translations.linkedin_integration }}</h3>
+                        <div class="integration-input">
+                            <input type="url" id="linkedin-url" placeholder="Paste LinkedIn job posting URL...">
+                            <button class="integration-btn" onclick="analyzeLinkedIn()">
+                                <i class="fas fa-search"></i>
+                                Analyze LinkedIn Post
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Indeed Integration -->
+                    <div class="integration-section">
+                        <h3><i class="fas fa-briefcase"></i> {{ translations.indeed_integration }}</h3>
+                        <div class="integration-input">
+                            <input type="url" id="indeed-url" placeholder="Paste Indeed job posting URL...">
+                            <button class="integration-btn" onclick="analyzeIndeed()">
+                                <i class="fas fa-search"></i>
+                                Analyze Indeed Post
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Glassdoor Integration -->
+                    <div class="integration-section">
+                        <h3><i class="fas fa-door-open"></i> {{ translations.glassdoor_integration }}</h3>
+                        <div class="integration-input">
+                            <input type="url" id="glassdoor-url" placeholder="Paste Glassdoor job posting URL...">
+                            <button class="integration-btn" onclick="analyzeGlassdoor()">
+                                <i class="fas fa-search"></i>
+                                Analyze Glassdoor Post
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Integration Results -->
+                    <div id="integration-results" class="integration-results" style="display: none;">
+                        <h3><i class="fas fa-chart-line"></i> Integration Analysis Results</h3>
+                        <div id="integration-content"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p>© 2025 JobGuardian Pro. Built with advanced AI and machine learning.</p>
+                <p class="disclaimer">{{ translations.disclaimer }}</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loading" class="loading-overlay" style="display: none;">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <p>{{ translations.analyzing }}</p>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html> 
