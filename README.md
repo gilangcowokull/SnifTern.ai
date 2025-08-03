@@ -1,8 +1,19 @@
-# InternshipGuardian Pro - Advanced Internship Fraud Detection Platform
+# SnifTern.ai - Advanced Internship Fraud Detection Platform
+
+**© 2025 SnifTern.ai. Developed by Team BinaryExecutor's using cutting-edge AI and machine learning technologies.**
+
+![Screenshot 1](images/s1.png)
+
+![Screenshot 1](images/s2.png)
+
+![Screenshot 1](images/s3.png)
+
+![Screenshot 1](images/s4.png)
+
 
 ## 🌟 **Project Overview**
 
-InternshipGuardian Pro is a comprehensive, AI-powered internship fraud detection platform built with Flask. It uses advanced machine learning and pattern recognition to identify fake internship postings and verify company legitimacy. The platform features a modern dark-themed web interface with multi-language support.
+SnifTern.ai is a comprehensive, AI-powered internship fraud detection platform built with Flask. It uses advanced machine learning and pattern recognition to identify fake internship postings and verify company legitimacy. The platform features a modern dark-themed web interface with multi-language support.
 
 ---
 
@@ -197,6 +208,8 @@ FakeJobPredictor/
 - `POST /search_company`: Company fraud database search
 - `POST /extract_url`: URL text extraction
 - `POST /analyze_linkedin`: LinkedIn integration
+- `POST /analyze_indeed`: Indeed integration
+- `POST /analyze_glassdoor`: Glassdoor integration
 - `POST /export_pdf`: PDF report generation
 
 #### **Key Features:**
@@ -552,7 +565,7 @@ Model files not found. Please run train_model.py first.
 
 ---
 
-**InternshipGuardian Pro** - Protecting internship seekers with advanced AI technology and comprehensive fraud detection capabilities.
+**SnifTern.ai** - Protecting internship seekers with advanced AI technology and comprehensive fraud detection capabilities.
 
 ---
 
@@ -571,4 +584,4 @@ python app.py
 # 3. Integrations tab - paste LinkedIn/Indeed URLs
 # 4. Language dropdown - switch between English/Hindi/Bengali
 # 5. Export PDF - after analysis, click export button
-``` 
+```
