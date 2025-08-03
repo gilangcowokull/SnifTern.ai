@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, jsonify, send_file
 import os
-from enhanced_prediction_utils import EnhancedFakeJobPredictor
+from enhanced_prediction_utils import EnhancedFakeInternshipPredictor
 from ocr_utils import extract_text_from_image, is_valid_image, get_ocr_status
 from scraping_utils import extract_text_from_url, is_valid_url
 import json
@@ -19,7 +19,7 @@ app = Flask(__name__)
 app.secret_key = 'your-secret-key-here'
 
 # Initialize enhanced predictor
-predictor = EnhancedFakeJobPredictor()
+predictor = EnhancedFakeInternshipPredictor()
 
 # Enhanced company database with more comprehensive information
 ENHANCED_COMPANY_DATABASE = {
@@ -109,17 +109,17 @@ ENHANCED_COMPANY_DATABASE = {
 # Multi-language support
 LANGUAGES = {
     'en': {
-        'title': 'JobGuardian Pro - Advanced Job Fraud Detection',
-        'tagline': 'Advanced AI-Powered Job Fraud Detection & Company Verification',
-        'job_detection': 'Job Detection',
+        'title': 'InternshipGuardian Pro - Advanced Internship Fraud Detection',
+        'tagline': 'Advanced AI-Powered Internship Fraud Detection & Company Verification',
+        'job_detection': 'Internship Detection',
         'company_search': 'Company Search',
-        'job_analysis': 'Job Posting Analysis',
-        'analysis_desc': 'Analyze job postings for potential fraud using advanced AI and pattern recognition.',
+        'job_analysis': 'Internship Posting Analysis',
+        'analysis_desc': 'Analyze internship postings for potential fraud using advanced AI and pattern recognition.',
         'direct_text': 'Direct Text',
         'url_extraction': 'URL Extraction',
-        'paste_placeholder': 'Paste the job posting text here...',
-        'analyze_btn': 'Analyze Job Posting',
-        'url_placeholder': 'Enter job posting URL...',
+        'paste_placeholder': 'Paste the internship posting text here...',
+        'analyze_btn': 'Analyze Internship Posting',
+        'url_placeholder': 'Enter internship posting URL...',
         'extract_btn': 'Extract & Analyze',
         'company_database': 'Company Fraud Database',
         'company_desc': 'Search our comprehensive database to check if a company has been reported for fraud.',
@@ -127,8 +127,8 @@ LANGUAGES = {
         'search_btn': 'Search',
         'results': 'Analysis Results',
         'company_info': 'Company Information',
-        'footer_copyright': '© 2024 JobGuardian Pro. Built with advanced AI and machine learning.',
-        'disclaimer': '⚠️ This tool is for educational purposes. Always verify job postings through official channels.',
+        'footer_copyright': '© 2024 InternshipGuardian Pro. Built with advanced AI and machine learning.',
+        'disclaimer': '⚠️ This tool is for educational purposes. Always verify internship postings through official channels.',
         'analyzing': 'Analyzing...',
         'likely_fake': 'Likely FAKE ❌',
         'likely_real': 'Likely REAL ✅',
@@ -150,7 +150,7 @@ LANGUAGES = {
         'green_flags': 'Green Flags',
         'export_pdf': 'Export PDF Report',
         'salary_analysis': 'Salary Analysis',
-        'job_quality': 'Job Description Quality',
+        'job_quality': 'Internship Description Quality',
         'interview_analysis': 'Interview Process Analysis',
         'document_analysis': 'Document Analysis',
         'linkedin_integration': 'LinkedIn Integration',
@@ -160,9 +160,9 @@ LANGUAGES = {
     'hi': {
         'title': 'जॉबगार्डियन प्रो - उन्नत नौकरी धोखाधड़ी पहचान',
         'tagline': 'उन्नत AI-संचालित नौकरी धोखाधड़ी पहचान और कंपनी सत्यापन',
-        'job_detection': 'नौकरी पहचान',
+        'job_detection': 'इंटर्नशिप पहचान',
         'company_search': 'कंपनी खोज',
-        'job_analysis': 'नौकरी पोस्टिंग विश्लेषण',
+        'job_analysis': 'इंटर्नशिप पोस्टिंग विश्लेषण',
         'analysis_desc': 'उन्नत AI और पैटर्न पहचान का उपयोग करके नौकरी पोस्टिंग का विश्लेषण करें।',
         'direct_text': 'सीधा टेक्स्ट',
         'url_extraction': 'URL निष्कर्षण',
@@ -199,7 +199,7 @@ LANGUAGES = {
         'green_flags': 'हरे झंडे',
         'export_pdf': 'PDF रिपोर्ट निर्यात करें',
         'salary_analysis': 'वेतन विश्लेषण',
-        'job_quality': 'नौकरी विवरण गुणवत्ता',
+        'job_quality': 'इंटर्नशिप विवरण गुणवत्ता',
         'interview_analysis': 'साक्षात्कार प्रक्रिया विश्लेषण',
         'document_analysis': 'दस्तावेज़ विश्लेषण',
         'linkedin_integration': 'LinkedIn एकीकरण',
@@ -209,9 +209,9 @@ LANGUAGES = {
     'bn': {
         'title': 'জবগার্ডিয়ান প্রো - উন্নত চাকরি প্রতারণা সনাক্তকরণ',
         'tagline': 'উন্নত AI-চালিত চাকরি প্রতারণা সনাক্তকরণ এবং কোম্পানি যাচাইকরণ',
-        'job_detection': 'চাকরি সনাক্তকরণ',
+        'job_detection': 'ইন্টার্নশিপ সনাক্তকরণ',
         'company_search': 'কোম্পানি অনুসন্ধান',
-        'job_analysis': 'চাকরি পোস্টিং বিশ্লেষণ',
+        'job_analysis': 'ইন্টার্নশিপ পোস্টিং বিশ্লেষণ',
         'analysis_desc': 'উন্নত AI এবং প্যাটার্ন সনাক্তকরণ ব্যবহার করে চাকরি পোস্টিং বিশ্লেষণ করুন।',
         'direct_text': 'সরাসরি টেক্সট',
         'url_extraction': 'URL নিষ্কর্ষণ',
@@ -248,7 +248,7 @@ LANGUAGES = {
         'green_flags': 'সবুজ পতাকা',
         'export_pdf': 'PDF রিপোর্ট রপ্তানি করুন',
         'salary_analysis': 'বেতন বিশ্লেষণ',
-        'job_quality': 'চাকরির বিবরণ গুণমান',
+        'job_quality': 'ইন্টার্নশিপের বিবরণ গুণমান',
         'interview_analysis': 'সাক্ষাত্কার প্রক্রিয়া বিশ্লেষণ',
         'document_analysis': 'নথি বিশ্লেষণ',
         'linkedin_integration': 'LinkedIn ইন্টিগ্রেশন',
@@ -263,7 +263,7 @@ def index():
     return render_template('index.html', lang=lang, translations=LANGUAGES.get(lang, LANGUAGES['en']))
 
 @app.route('/detect', methods=['POST'])
-def detect_job():
+def detect_internship():
     try:
         data = request.get_json()
         text = data.get('text', '')
@@ -276,7 +276,7 @@ def detect_job():
         
         # AI-Powered Features
         salary_analysis = predictor.analyze_salary_range(text)
-        job_quality_score = predictor.analyze_job_description_quality(text)
+        job_quality_score = predictor.analyze_internship_description_quality(text)
         interview_analysis = predictor.analyze_interview_process(text)
         
         return jsonify({
@@ -286,7 +286,7 @@ def detect_job():
             'pattern_matches': pattern_matches,
             'word_count': len(text.split()),
             'salary_analysis': salary_analysis,
-            'job_quality_score': job_quality_score,
+            'internship_quality_score': job_quality_score,
             'interview_analysis': interview_analysis
         })
     
@@ -388,7 +388,7 @@ def analyze_linkedin():
                 'pattern_matches': pattern_matches,
                 'word_count': len(extracted_text.split()),
                 'salary_analysis': salary_analysis,
-                'job_quality_score': job_quality_score,
+                'internship_quality_score': job_quality_score,
                 'interview_analysis': interview_analysis,
                 'source': 'LinkedIn'
             })
@@ -418,7 +418,7 @@ def export_pdf():
             spaceAfter=30,
             alignment=1
         )
-        story.append(Paragraph("JobGuardian Pro - Analysis Report", title_style))
+        story.append(Paragraph("InternshipGuardian Pro - Analysis Report", title_style))
         story.append(Spacer(1, 20))
         
         # Analysis Results
@@ -455,7 +455,7 @@ def export_pdf():
             ai_data = [
                 ['Analysis Type', 'Result'],
                 ['Salary Analysis', analysis_data.get('salary_analysis', 'N/A')],
-                ['Job Quality Score', analysis_data.get('job_quality_score', 'N/A')],
+                ['Internship Quality Score', analysis_data.get('internship_quality_score', 'N/A')],
                 ['Interview Analysis', analysis_data.get('interview_analysis', 'N/A')]
             ]
             
@@ -484,7 +484,7 @@ def export_pdf():
             story.append(Spacer(1, 20))
         
         # Footer
-        story.append(Paragraph("Generated by JobGuardian Pro", styles['Normal']))
+        story.append(Paragraph("Generated by InternshipGuardian Pro", styles['Normal']))
         story.append(Paragraph(f"Date: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}", styles['Normal']))
         story.append(Paragraph("⚠️ This report is for educational purposes only.", styles['Normal']))
         
@@ -494,7 +494,7 @@ def export_pdf():
         return send_file(
             buffer,
             as_attachment=True,
-            download_name=f"jobguardian_report_{datetime.now().strftime('%Y%m%d_%H%M%S')}.pdf",
+            download_name=f"internshipguardian_report_{datetime.now().strftime('%Y%m%d_%H%M%S')}.pdf",
             mimetype='application/pdf'
         )
     

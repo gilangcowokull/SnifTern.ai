@@ -3,7 +3,7 @@ from preprocessing import preprocess_text
 import os
 import re
 
-class EnhancedFakeJobPredictor:
+class EnhancedFakeInternshipPredictor:
     def __init__(self, model_dir='model'):
         """
         Initialize the enhanced predictor with trained model and vectorizer
@@ -94,7 +94,7 @@ class EnhancedFakeJobPredictor:
     
     def check_fake_patterns(self, text):
         """
-        Check for common fake internship/job patterns
+        Check for common fake internship patterns
         Returns: (is_fake, pattern_matches, confidence_boost)
         """
         # Text is already preprocessed (lowercase, no punctuation)
@@ -225,8 +225,8 @@ class EnhancedFakeJobPredictor:
         else:
             return "ℹ️ INFO: No specific salary mentioned"
 
-    def analyze_job_description_quality(self, text):
-        """Rate the professionalism of job descriptions"""
+    def analyze_internship_description_quality(self, text):
+        """Rate the professionalism of internship descriptions"""
         text_lower = text.lower()
         
         # Professional indicators
@@ -253,13 +253,13 @@ class EnhancedFakeJobPredictor:
         unprofessional_ratio = unprofessional_count / max(total_words, 1) * 100
         
         if professional_ratio > 2 and unprofessional_ratio < 1:
-            return "✅ EXCELLENT: Professional job description"
+            return "✅ EXCELLENT: Professional internship description"
         elif professional_ratio > 1 and unprofessional_ratio < 2:
-            return "✅ GOOD: Well-structured job description"
+            return "✅ GOOD: Well-structured internship description"
         elif unprofessional_ratio > 2:
-            return "⚠️ POOR: Unprofessional job description"
+            return "⚠️ POOR: Unprofessional internship description"
         else:
-            return "ℹ️ AVERAGE: Standard job description"
+            return "ℹ️ AVERAGE: Standard internship description"
 
     def analyze_interview_process(self, text):
         """Identify suspicious interview procedures"""

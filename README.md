@@ -1,8 +1,8 @@
-# JobGuardian Pro - Advanced Job Fraud Detection Platform
+# InternshipGuardian Pro - Advanced Internship Fraud Detection Platform
 
 ## 🌟 **Project Overview**
 
-JobGuardian Pro is a comprehensive, AI-powered job fraud detection platform built with Flask. It uses advanced machine learning and pattern recognition to identify fake job postings and verify company legitimacy. The platform features a modern dark-themed web interface with multi-language support.
+InternshipGuardian Pro is a comprehensive, AI-powered internship fraud detection platform built with Flask. It uses advanced machine learning and pattern recognition to identify fake internship postings and verify company legitimacy. The platform features a modern dark-themed web interface with multi-language support.
 
 ---
 
@@ -87,15 +87,15 @@ gunicorn>=21.0.0                # Production server
 
 ### **AI-Powered Analysis**
 - **Salary Range Analysis**: Detects unrealistic salary promises
-- **Job Description Quality Score**: Rates professionalism of job descriptions
+- **Internship Description Quality Score**: Rates professionalism of internship descriptions
 - **Interview Process Analysis**: Identifies suspicious interview procedures
 - **Pattern Recognition**: Advanced regex pattern matching for fraud detection
 
 ### **Platform Integrations**
-- **LinkedIn Integration**: Direct LinkedIn job posting analysis
-- **Indeed Integration**: Indeed job posting analysis
-- **Glassdoor Integration**: Glassdoor job posting analysis
-- **URL Extraction**: Extract and analyze job content from any URL
+- **LinkedIn Integration**: Direct LinkedIn internship posting analysis
+- **Indeed Integration**: Indeed internship posting analysis
+- **Glassdoor Integration**: Glassdoor internship posting analysis
+- **URL Extraction**: Extract and analyze internship content from any URL
 
 ### **Enhanced Company Database**
 - **Comprehensive Company Info**: Domain age, social media, contact verification
@@ -142,17 +142,17 @@ FakeJobPredictor/
 
 ## 🔧 **Core Functions & How They Work**
 
-### **1. Job Detection Engine (`enhanced_prediction_utils.py`)**
+### **1. Internship Detection Engine (`enhanced_prediction_utils.py`)**
 
 #### **Main Functions:**
-- `EnhancedFakeJobPredictor()`: Main prediction class
+- `EnhancedFakeInternshipPredictor()`: Main prediction class
 - `predict(text)`: Core prediction function
 - `get_prediction_result(text)`: Formatted prediction results
 - `check_fake_patterns(text)`: Pattern-based fraud detection
 
 #### **AI Analysis Functions:**
 - `analyze_salary_range(text)`: Detects unrealistic salary promises
-- `analyze_job_description_quality(text)`: Rates job description professionalism
+- `analyze_internship_description_quality(text)`: Rates internship description professionalism
 - `analyze_interview_process(text)`: Identifies suspicious interview procedures
 
 #### **How It Works:**
@@ -165,7 +165,7 @@ FakeJobPredictor/
 ### **2. Web Scraping (`scraping_utils.py`)**
 
 #### **Main Functions:**
-- `extract_text_from_url(url)`: Extracts text from job posting URLs
+- `extract_text_from_url(url)`: Extracts text from internship posting URLs
 - `is_valid_url(url)`: Validates URL format
 - `clean_extracted_text(text)`: Cleans scraped text
 
@@ -193,7 +193,7 @@ FakeJobPredictor/
 
 #### **Main Routes:**
 - `GET /`: Main application page
-- `POST /detect`: Job posting analysis
+- `POST /detect`: Internship posting analysis
 - `POST /search_company`: Company fraud database search
 - `POST /extract_url`: URL text extraction
 - `POST /analyze_linkedin`: LinkedIn integration
@@ -237,7 +237,7 @@ FakeJobPredictor/
 - ✅ **NORMAL**: Standard salary range
 - ℹ️ **INFO**: No specific salary mentioned
 
-### **Job Description Quality Score**
+### **Internship Description Quality Score**
 **Professional Indicators:**
 - Requirements, qualifications, responsibilities
 - Experience, skills, education
@@ -249,10 +249,10 @@ FakeJobPredictor/
 - Commission only, no salary
 
 **Scoring:**
-- ✅ **EXCELLENT**: Professional job description
-- ✅ **GOOD**: Well-structured job description
-- ℹ️ **AVERAGE**: Standard job description
-- ⚠️ **POOR**: Unprofessional job description
+- ✅ **EXCELLENT**: Professional internship description
+- ✅ **GOOD**: Well-structured internship description
+- ℹ️ **AVERAGE**: Standard internship description
+- ⚠️ **POOR**: Unprofessional internship description
 
 ### **Interview Process Analysis**
 **Suspicious Patterns:**
@@ -385,7 +385,7 @@ python app.py
 
 ### **Sample Test Data:**
 
-#### **Fraudulent Job Posting:**
+#### **Fraudulent Internship Posting:**
 ```
 We are looking for a remote data entry specialist. No experience required. 
 You can work from home and earn $50-100 per hour. Immediate start available. 
@@ -399,7 +399,7 @@ This is an urgent opportunity with limited time. Certificate will be provided fo
 - `microsoft` (Low fraud score: 3/100)
 
 ### **Feature Testing Checklist:**
-- [ ] Job posting analysis (direct text)
+- [ ] Internship posting analysis (direct text)
 - [ ] URL extraction and analysis
 - [ ] Company fraud database search
 - [ ] LinkedIn integration
@@ -417,7 +417,7 @@ This is an urgent opportunity with limited time. Certificate will be provided fo
 ### **Machine Learning Model:**
 - **Algorithm**: Logistic Regression
 - **Features**: TF-IDF vectorization
-- **Training Data**: Extensive job posting dataset
+- **Training Data**: Extensive internship posting dataset
 - **Accuracy**: High accuracy on fraud detection
 
 ### **Pattern Recognition:**
@@ -483,9 +483,9 @@ Model files not found. Please run train_model.py first.
 ## 🔮 **Future Enhancements**
 
 ### **Planned Features:**
-- **Real-time Monitoring**: Job posting change detection
+- **Real-time Monitoring**: Internship posting change detection
 - **Email Alerts**: Fraud notification system
-- **Batch Analysis**: Multiple job posting analysis
+- **Batch Analysis**: Multiple internship posting analysis
 - **API Integration**: RESTful API for developers
 - **Mobile App**: Native mobile application
 - **Advanced Analytics**: Detailed fraud trend analysis
@@ -532,15 +532,15 @@ Model files not found. Please run train_model.py first.
 
 ## 🎯 **Key Benefits**
 
-### **For Job Seekers:**
-- **Fraud Protection**: Avoid job scams and fraud
-- **Time Saving**: Quick analysis of job postings
+### **For Internship Seekers:**
+- **Fraud Protection**: Avoid internship scams and fraud
+- **Time Saving**: Quick analysis of internship postings
 - **Confidence Building**: Make informed decisions
 - **Risk Assessment**: Understand potential risks
 
 ### **For Employers:**
-- **Reputation Protection**: Verify job posting legitimacy
-- **Quality Assurance**: Ensure professional job descriptions
+- **Reputation Protection**: Verify internship posting legitimacy
+- **Quality Assurance**: Ensure professional internship descriptions
 - **Compliance**: Meet legal and ethical standards
 - **Trust Building**: Build trust with potential candidates
 
@@ -552,7 +552,7 @@ Model files not found. Please run train_model.py first.
 
 ---
 
-**JobGuardian Pro** - Protecting job seekers with advanced AI technology and comprehensive fraud detection capabilities.
+**InternshipGuardian Pro** - Protecting internship seekers with advanced AI technology and comprehensive fraud detection capabilities.
 
 ---
 
@@ -566,7 +566,7 @@ python app.py
 # Open browser: http://localhost:5000
 
 # Test features:
-# 1. Job Detection tab - paste job text
+# 1. Internship Detection tab - paste internship text
 # 2. Company Search tab - search "fakecorp" or "google"
 # 3. Integrations tab - paste LinkedIn/Indeed URLs
 # 4. Language dropdown - switch between English/Hindi/Bengali
