@@ -461,36 +461,20 @@ async function analyzeIndeed() {
     showLoading();
     
     try {
-        // Use the same URL extraction and analysis for Indeed
-        const extractResponse = await fetch('/extract_url', {
+        const response = await fetch('/analyze_indeed', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ url: indeedUrl })
+            body: JSON.stringify({ indeed_url: indeedUrl })
         });
         
-        const extractData = await extractResponse.json();
+        const data = await response.json();
         
-        if (!extractResponse.ok) {
-            showIntegrationError(extractData.error || 'Failed to extract text from Indeed URL.');
-            return;
-        }
-        
-        const analyzeResponse = await fetch('/detect', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ text: extractData.text })
-        });
-        
-        const analyzeData = await analyzeResponse.json();
-        
-        if (analyzeResponse.ok) {
-            displayIntegrationResults(analyzeData, 'Indeed', extractData.text);
+        if (response.ok) {
+            displayIntegrationResults(data, 'Indeed');
         } else {
-            showIntegrationError(analyzeData.error || 'An error occurred during Indeed analysis.');
+            showIntegrationError(data.error || 'An error occurred during Indeed analysis.');
         }
     } catch (error) {
         showIntegrationError('Network error. Please check your connection and try again.');
@@ -511,36 +495,20 @@ async function analyzeGlassdoor() {
     showLoading();
     
     try {
-        // Use the same URL extraction and analysis for Glassdoor
-        const extractResponse = await fetch('/extract_url', {
+        const response = await fetch('/analyze_glassdoor', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ url: glassdoorUrl })
+            body: JSON.stringify({ glassdoor_url: glassdoorUrl })
         });
         
-        const extractData = await extractResponse.json();
+        const data = await response.json();
         
-        if (!extractResponse.ok) {
-            showIntegrationError(extractData.error || 'Failed to extract text from Glassdoor URL.');
-            return;
-        }
-        
-        const analyzeResponse = await fetch('/detect', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ text: extractData.text })
-        });
-        
-        const analyzeData = await analyzeResponse.json();
-        
-        if (analyzeResponse.ok) {
-            displayIntegrationResults(analyzeData, 'Glassdoor', extractData.text);
+        if (response.ok) {
+            displayIntegrationResults(data, 'Glassdoor');
         } else {
-            showIntegrationError(analyzeData.error || 'An error occurred during Glassdoor analysis.');
+            showIntegrationError(data.error || 'An error occurred during Glassdoor analysis.');
         }
     } catch (error) {
         showIntegrationError('Network error. Please check your connection and try again.');
@@ -553,6 +521,7 @@ async function analyzeGlassdoor() {
 function displayIntegrationResults(data, platform, extractedText = null) {
     const resultsDiv = document.getElementById('integration-results');
     const resultContent = document.getElementById('integration-content');
+    const aiAnalysisDiv = document.getElementById('ai-analysis');
     
     const isFake = data.result.includes('FAKE');
     const resultClass = isFake ? 'fake' : 'real';
@@ -612,6 +581,15 @@ function displayIntegrationResults(data, platform, extractedText = null) {
     
     resultContent.innerHTML = html;
     resultsDiv.style.display = 'block';
+    
+    // Display AI Analysis if available
+    if (data.salary_analysis || data.internship_quality_score || data.interview_analysis) {
+        displayAIAnalysis(data);
+        aiAnalysisDiv.style.display = 'block';
+    }
+    
+    // Store data for PDF export
+    window.currentAnalysisData = data;
 }
 
 // Show integration error message

@@ -368,8 +368,12 @@ def analyze_linkedin():
         if not linkedin_url:
             return jsonify({'error': 'No LinkedIn URL provided'}), 400
         
-        # Extract text from LinkedIn job posting
-        extracted_text = extract_text_from_url(linkedin_url)
+        # Validate LinkedIn URL
+        if 'linkedin.com/jobs' not in linkedin_url:
+            return jsonify({'error': 'Please provide a valid LinkedIn job posting URL'}), 400
+        
+        # Extract text from LinkedIn job posting with enhanced scraping
+        extracted_text = extract_linkedin_job_content(linkedin_url)
         
         if extracted_text:
             # Get prediction with pattern analysis
@@ -377,7 +381,7 @@ def analyze_linkedin():
             
             # AI-Powered Features
             salary_analysis = predictor.analyze_salary_range(extracted_text)
-            job_quality_score = predictor.analyze_job_description_quality(extracted_text)
+            job_quality_score = predictor.analyze_internship_description_quality(extracted_text)
             interview_analysis = predictor.analyze_interview_process(extracted_text)
             
             return jsonify({
@@ -393,10 +397,96 @@ def analyze_linkedin():
                 'source': 'LinkedIn'
             })
         else:
-            return jsonify({'error': 'Could not extract text from LinkedIn URL'}), 400
+            return jsonify({'error': 'Could not extract text from LinkedIn URL. LinkedIn may have blocked automated access.'}), 400
     
     except Exception as e:
-        return jsonify({'error': str(e)}), 500
+        return jsonify({'error': f'LinkedIn analysis failed: {str(e)}'}), 500
+
+@app.route('/analyze_indeed', methods=['POST'])
+def analyze_indeed():
+    try:
+        data = request.get_json()
+        indeed_url = data.get('indeed_url', '')
+        
+        if not indeed_url:
+            return jsonify({'error': 'No Indeed URL provided'}), 400
+        
+        # Validate Indeed URL
+        if 'indeed.com' not in indeed_url:
+            return jsonify({'error': 'Please provide a valid Indeed job posting URL'}), 400
+        
+        # Extract text from Indeed job posting
+        extracted_text = extract_indeed_job_content(indeed_url)
+        
+        if extracted_text:
+            # Get prediction with pattern analysis
+            result, confidence_score, icon, pattern_matches = predictor.get_prediction_result(extracted_text)
+            
+            # AI-Powered Features
+            salary_analysis = predictor.analyze_salary_range(extracted_text)
+            job_quality_score = predictor.analyze_internship_description_quality(extracted_text)
+            interview_analysis = predictor.analyze_interview_process(extracted_text)
+            
+            return jsonify({
+                'success': True,
+                'result': result,
+                'confidence_score': round(confidence_score, 1),
+                'icon': icon,
+                'pattern_matches': pattern_matches,
+                'word_count': len(extracted_text.split()),
+                'salary_analysis': salary_analysis,
+                'internship_quality_score': job_quality_score,
+                'interview_analysis': interview_analysis,
+                'source': 'Indeed'
+            })
+        else:
+            return jsonify({'error': 'Could not extract text from Indeed URL. Indeed may have blocked automated access.'}), 400
+    
+    except Exception as e:
+        return jsonify({'error': f'Indeed analysis failed: {str(e)}'}), 500
+
+@app.route('/analyze_glassdoor', methods=['POST'])
+def analyze_glassdoor():
+    try:
+        data = request.get_json()
+        glassdoor_url = data.get('glassdoor_url', '')
+        
+        if not glassdoor_url:
+            return jsonify({'error': 'No Glassdoor URL provided'}), 400
+        
+        # Validate Glassdoor URL
+        if 'glassdoor.com' not in glassdoor_url:
+            return jsonify({'error': 'Please provide a valid Glassdoor job posting URL'}), 400
+        
+        # Extract text from Glassdoor job posting
+        extracted_text = extract_glassdoor_job_content(glassdoor_url)
+        
+        if extracted_text:
+            # Get prediction with pattern analysis
+            result, confidence_score, icon, pattern_matches = predictor.get_prediction_result(extracted_text)
+            
+            # AI-Powered Features
+            salary_analysis = predictor.analyze_salary_range(extracted_text)
+            job_quality_score = predictor.analyze_internship_description_quality(extracted_text)
+            interview_analysis = predictor.analyze_interview_process(extracted_text)
+            
+            return jsonify({
+                'success': True,
+                'result': result,
+                'confidence_score': round(confidence_score, 1),
+                'icon': icon,
+                'pattern_matches': pattern_matches,
+                'word_count': len(extracted_text.split()),
+                'salary_analysis': salary_analysis,
+                'internship_quality_score': job_quality_score,
+                'interview_analysis': interview_analysis,
+                'source': 'Glassdoor'
+            })
+        else:
+            return jsonify({'error': 'Could not extract text from Glassdoor URL. Glassdoor may have blocked automated access.'}), 400
+    
+    except Exception as e:
+        return jsonify({'error': f'Glassdoor analysis failed: {str(e)}'}), 500
 
 @app.route('/export_pdf', methods=['POST'])
 def export_pdf():
@@ -500,6 +590,206 @@ def export_pdf():
     
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+
+# Platform-specific scraping functions
+def extract_linkedin_job_content(url):
+    """Enhanced LinkedIn job content extraction"""
+    try:
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+            'Accept-Language': 'en-US,en;q=0.5',
+            'Accept-Encoding': 'gzip, deflate',
+            'Connection': 'keep-alive',
+            'Upgrade-Insecure-Requests': '1',
+        }
+        
+        response = requests.get(url, headers=headers, timeout=15)
+        response.raise_for_status()
+        
+        soup = BeautifulSoup(response.content, 'html.parser')
+        
+        # LinkedIn job posting selectors (may need updates as LinkedIn changes)
+        job_selectors = [
+            '.job-description',
+            '.show-more-less-html__markup',
+            '.job-description__content',
+            '[data-job-description]',
+            '.job-description__text',
+            '.description__text',
+            '.job-description-content'
+        ]
+        
+        job_text = ""
+        for selector in job_selectors:
+            elements = soup.select(selector)
+            if elements:
+                job_text = ' '.join([elem.get_text(strip=True) for elem in elements])
+                break
+        
+        # Fallback: try to find any text content
+        if not job_text:
+            # Remove navigation, footer, and other non-content elements
+            for element in soup(['nav', 'footer', 'header', 'script', 'style', 'aside']):
+                element.decompose()
+            
+            # Try to extract main content
+            main_content = soup.find('main') or soup.find('article') or soup.find('div', class_='main')
+            if main_content:
+                job_text = main_content.get_text(strip=True)
+            else:
+                job_text = soup.get_text(strip=True)
+        
+        # Clean and return text
+        if job_text:
+            return clean_extracted_text(job_text)
+        else:
+            return ""
+            
+    except Exception as e:
+        print(f"LinkedIn extraction error: {str(e)}")
+        return ""
+
+def extract_indeed_job_content(url):
+    """Enhanced Indeed job content extraction"""
+    try:
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+            'Accept-Language': 'en-US,en;q=0.5',
+            'Accept-Encoding': 'gzip, deflate',
+            'Connection': 'keep-alive',
+            'Upgrade-Insecure-Requests': '1',
+        }
+        
+        response = requests.get(url, headers=headers, timeout=15)
+        response.raise_for_status()
+        
+        soup = BeautifulSoup(response.content, 'html.parser')
+        
+        # Indeed job posting selectors
+        job_selectors = [
+            '#jobDescriptionText',
+            '.job-description',
+            '[data-testid="job-description"]',
+            '.jobsearch-jobDescriptionText',
+            '.job-description-container'
+        ]
+        
+        job_text = ""
+        for selector in job_selectors:
+            elements = soup.select(selector)
+            if elements:
+                job_text = ' '.join([elem.get_text(strip=True) for elem in elements])
+                break
+        
+        # Fallback: try to find any text content
+        if not job_text:
+            # Remove navigation, footer, and other non-content elements
+            for element in soup(['nav', 'footer', 'header', 'script', 'style', 'aside']):
+                element.decompose()
+            
+            # Try to extract main content
+            main_content = soup.find('main') or soup.find('article') or soup.find('div', class_='main')
+            if main_content:
+                job_text = main_content.get_text(strip=True)
+            else:
+                job_text = soup.get_text(strip=True)
+        
+        # Clean and return text
+        if job_text:
+            return clean_extracted_text(job_text)
+        else:
+            return ""
+            
+    except Exception as e:
+        print(f"Indeed extraction error: {str(e)}")
+        return ""
+
+def extract_glassdoor_job_content(url):
+    """Enhanced Glassdoor job content extraction"""
+    try:
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+            'Accept-Language': 'en-US,en;q=0.5',
+            'Accept-Encoding': 'gzip, deflate',
+            'Connection': 'keep-alive',
+            'Upgrade-Insecure-Requests': '1',
+        }
+        
+        response = requests.get(url, headers=headers, timeout=15)
+        response.raise_for_status()
+        
+        soup = BeautifulSoup(response.content, 'html.parser')
+        
+        # Glassdoor job posting selectors
+        job_selectors = [
+            '.jobDescriptionContent',
+            '.job-description',
+            '[data-testid="job-description"]',
+            '.desc',
+            '.job-description-content'
+        ]
+        
+        job_text = ""
+        for selector in job_selectors:
+            elements = soup.select(selector)
+            if elements:
+                job_text = ' '.join([elem.get_text(strip=True) for elem in elements])
+                break
+        
+        # Fallback: try to find any text content
+        if not job_text:
+            # Remove navigation, footer, and other non-content elements
+            for element in soup(['nav', 'footer', 'header', 'script', 'style', 'aside']):
+                element.decompose()
+            
+            # Try to extract main content
+            main_content = soup.find('main') or soup.find('article') or soup.find('div', class_='main')
+            if main_content:
+                job_text = main_content.get_text(strip=True)
+            else:
+                job_text = soup.get_text(strip=True)
+        
+        # Clean and return text
+        if job_text:
+            return clean_extracted_text(job_text)
+        else:
+            return ""
+            
+    except Exception as e:
+        print(f"Glassdoor extraction error: {str(e)}")
+        return ""
+
+def clean_extracted_text(text):
+    """Clean extracted text from job postings"""
+    if not text:
+        return ""
+    
+    # Remove extra whitespace
+    text = ' '.join(text.split())
+    
+    # Remove common job site elements
+    remove_patterns = [
+        r'cookie|privacy|terms|conditions',
+        r'sign in|sign up|login|register',
+        r'apply now|apply for this job',
+        r'share|save|bookmark',
+        r'related jobs|similar jobs',
+        r'company reviews|employee reviews',
+        r'salary estimates|salary information',
+        r'job alerts|email alerts',
+        r'feedback|report|flag'
+    ]
+    
+    for pattern in remove_patterns:
+        text = re.sub(pattern, '', text, flags=re.IGNORECASE)
+    
+    # Clean up extra whitespace again
+    text = ' '.join(text.split())
+    
+    return text
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000) 
